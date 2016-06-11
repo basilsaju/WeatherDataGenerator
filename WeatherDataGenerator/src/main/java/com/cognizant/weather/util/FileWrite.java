@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+*This class is to write output to a file
+* @param fileName, content
+*/
 public class FileWrite {
 	
 	
@@ -22,8 +26,6 @@ public class FileWrite {
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(content);
 			bw.close();
-
-			System.out.println("Done");
 
 		} catch (IOException e) {
 			e.printStackTrace();
