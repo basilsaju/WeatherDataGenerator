@@ -12,7 +12,6 @@ import com.cognizant.weather.util.Log;
 
 public class FileRead {
 
-	//static Logger LOG = LoggerFactory.getLogger(FileRead.class);
 	static Log LOG = new Log();
 	static BufferedReader in = null;
 	static Map<String, Cordinates> locationMap = new HashMap<String, Cordinates>();
