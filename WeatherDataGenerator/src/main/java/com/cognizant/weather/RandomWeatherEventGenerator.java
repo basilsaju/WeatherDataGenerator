@@ -5,17 +5,18 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.cognizant.weather.util.Log;
 
 public class RandomWeatherEventGenerator {
 	
 	String condition;
 	String season;
 
-	Logger LOG = LoggerFactory.getLogger(RandomWeatherEventGenerator.class);
-	public String startSendingTemperatureReadings(String city,
-			Map<String, MinMax> map) {
+	Log LOG = new Log();
+	/**
+	 * Generates the weather readings
+	 * */
+	public String startSendingWeatherReadings(String city,Map<String, MinMax> map) {
 		Random rand = new Random();
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, -1); // today minus one year
@@ -28,14 +29,15 @@ public class RandomWeatherEventGenerator {
 		int temp = rand.nextInt((minMax.getMaxTemp() - minMax.getMinTemp()) + 1) + minMax.getMinTemp();
 		float pressure = rand.nextFloat() * (minMax.getMaxPressure() - minMax.getMinPressure()) + minMax.getMinPressure();
 		float humidity = rand.nextFloat() * (minMax.getMaxHumidity() - minMax.getMinHumidity()) + minMax.getMinHumidity();
-		WeatherEvent weatherEvent = new WeatherEvent(temp, pressure, humidity, date);
-		condition = getCondition(weatherEvent);
-		String weather = weatherEvent.toString()+"|"+condition;
-		LOG.info("WeatherEvent generated is: " + weather);
+		condition = getCondition(temp, pressure, humidity);
+		WeatherEvent weatherEvent = new WeatherEvent(temp, pressure, humidity, date, condition);
+		String weather = weatherEvent.toString();
+		LOG.info(RandomWeatherEventGenerator.class, "WeatherEvent generated is: " + weather);
 		
 		return weather;
 	}
 
+	/* returns the season based on month of date */
 	String getSeason(Date date) {
 		int month = date.getMonth();
 		switch (month) {
@@ -57,8 +59,8 @@ public class RandomWeatherEventGenerator {
 		}
 	}
 	
-	String getCondition(WeatherEvent weatherEvent) {
-		if (weatherEvent.getHumidity() > 90 && weatherEvent.getTemperature() < 10 && weatherEvent.getHumidity() > 1000)
+	String getCondition(int temp, float pressure, float humidity) {
+		if (pressure > 90 && temp < 10 && humidity > 1000)
 			if (season.equals("winter")) {
 				return "snow";
 			} else{
@@ -67,5 +69,4 @@ public class RandomWeatherEventGenerator {
 		else
 			return "sunny";
 	}
-
 }

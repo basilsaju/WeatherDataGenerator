@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class WeatherEvent {
 
-	/** Temperature in Celcius. */
+	/** Temperature in Celsius. */
 	private int temperature;
 
 	/** Pressure in hPa. */
@@ -21,6 +21,9 @@ public class WeatherEvent {
 
 	/** Time temperature reading was taken. */
 	private Date timeOfReading;
+	
+	/** weather condition*/
+	private String condition;
 
 	/**
 	 * Temperature constructor.
@@ -31,11 +34,12 @@ public class WeatherEvent {
 	 *            Time of Reading
 	 */
 	public WeatherEvent(int temperature, float pressure, float humidity,
-			Date timeOfReading) {
+			Date timeOfReading, String condition) {
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.humidity = humidity;
 		this.timeOfReading = timeOfReading;
+		this.condition = condition;
 	}
 
 	/**
@@ -73,6 +77,23 @@ public class WeatherEvent {
 	public Date getTimeOfReading() {
 		return timeOfReading;
 	}
+	
+	/**
+	 * Get the weather condition.
+	 * 
+	 * @return weather condition
+	 */
+	public String getCondition() {
+		return condition;
+	}
+	
+	/**
+	 * Set the weather condition.
+	 * 
+	 */
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
 
 	@Override
 	public String toString() {
@@ -80,7 +101,7 @@ public class WeatherEvent {
 
 		String tempReadings = "|" + formatter.format(timeOfReading) + "|"
 				+ temperature + "|" + String.format("%.2f", pressure) + "|"
-				+ String.format("%.2f", humidity);
+				+ String.format("%.2f", humidity) + "|" + condition;
 
 		return tempReadings;
 	}

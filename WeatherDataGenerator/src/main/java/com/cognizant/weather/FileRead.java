@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.cognizant.weather.util.Log;
 
 public class FileRead {
 
-	static Logger LOG = LoggerFactory.getLogger(FileRead.class);
+	//static Logger LOG = LoggerFactory.getLogger(FileRead.class);
+	static Log LOG = new Log();
 	static BufferedReader in = null;
 	static Map<String, Cordinates> locationMap = new HashMap<String, Cordinates>();
 	static Map<String, MinMax> minMaxMap = new HashMap<String, MinMax>();
@@ -23,7 +23,7 @@ public class FileRead {
 		try {
 			reader = new FileReader(locationFile);
 		} catch (FileNotFoundException e) {
-			LOG.error("File not found!");
+			LOG.error(FileRead.class,"File not found!");
 		}
 		in = new BufferedReader(reader);
 		String string;
@@ -42,9 +42,9 @@ public class FileRead {
 				}
 			}
 		} catch (NumberFormatException e) {
-			LOG.error("Number format issue! Check if the values(lat., long., alt.) are given in proper format.");
+			LOG.error(FileRead.class,"Number format issue! Check if the values(lat., long., alt.) are given in proper format.");
 		} catch (IOException e) {
-			LOG.error("IOException! Check if file is correct.");
+			LOG.error(FileRead.class,"IOException! Check if file is correct.");
 		}
 		return locationMap;
 	 }
@@ -54,8 +54,8 @@ public class FileRead {
 		try {
 			reader = new FileReader(minMaxFile);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(FileRead.class,"File not found!");
+
 		}
 		in = new BufferedReader(reader);
 		
@@ -80,9 +80,9 @@ public class FileRead {
 				}
 			}
 		} catch (NumberFormatException e) {
-			LOG.error("Number format issue! Check if the values are given in proper format.");
+			LOG.error(FileRead.class,"Number format issue! Check if the values are given in proper format.");
 		} catch (IOException e) {
-			LOG.error("IOException! Check if file is correct.");
+			LOG.error(FileRead.class,"IOException! Check if file is correct.");
 		}
 		return minMaxMap;
 	}
