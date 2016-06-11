@@ -42,7 +42,7 @@ public class WeatherDataGenerator {
 				for (int i = 0; i < 5; i++) {
 					String temp = generator.startSendingWeatherReadings(entry.getKey(), minMaxMap);
 					weatherReadings = weatherReadings.append(entry.getKey() + "|"+ cordinates.getLongitude() + ","
-									+ cordinates.getLatitude() + ","+ cordinates.getAltitude() + temp+"\n");
+							+ cordinates.getLatitude() + ","+ cordinates.getAltitude() + temp+"\n");
 				}
 			}
 			
