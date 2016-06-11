@@ -20,13 +20,13 @@ public class WeatherDataGenerator {
 		/**
 		 * file that contains location details: city,latitude,longitude,altitude
 		 */
-		File locationFile = new File("/Users/basil/location.txt");
+		File locationFile = new File(args[0]);
 		/**
 		 * file that contains min and max values for temperature, pressure and
 		 * humidity: city, season, min. temp, max. temp, min. pressure, max.
 		 * pressure, min. humidity, max. humidity
 		 */
-		File minMaxFile = new File("/Users/basil/minmax.txt");
+		File minMaxFile = new File(args[1]);
 		/* check is file exists */
 		if ((locationFile.exists() && !locationFile.isDirectory())
 				&& (minMaxFile.exists() && !minMaxFile.isDirectory())) {
