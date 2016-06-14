@@ -1,0 +1,40 @@
+sydney,winter,0,10,900,1100,53,90
+sydney,spring,15,25,1000,1100,70,85
+sydney,summer,25,46,1000,1100,35,90
+sydney,autumn,15,25,900,1000,40,80
+melbourne,winter,0,10,900,1100,53,90
+melbourne,spring,15,25,1000,1100,70,85
+melbourne,summer,25,46,1000,1100,35,90
+melbourne,autumn,15,25,900,1000,40,80
+adelaide,winter,0,10,900,1100,53,90
+adelaide,spring,15,25,1000,1100,70,85
+adelaide,summer,25,46,1000,1100,35,90
+adelaide,autumn,15,25,900,1000,40,80
+perth,winter,0,10,900,1100,53,90
+perth,spring,15,25,1000,1100,70,85
+perth,summer,25,46,1000,1100,35,90
+perth,autumn,15,25,900,1000,40,80
+canberra,winter,0,10,900,1100,53,90
+canberra,spring,15,25,1000,1100,70,85
+canberra,summer,25,46,1000,1100,35,90
+canberra,autumn,15,25,900,1000,40,80
+gold coast,winter,0,10,900,1100,53,90
+gold coast,spring,15,25,1000,1100,70,85
+gold coast,summer,25,46,1000,1100,35,90
+gold coast,autumn,15,25,900,1000,40,80
+newcastle,winter,0,10,900,1100,53,90
+newcastle,spring,15,25,1000,1100,70,85
+newcastle,summer,25,46,1000,1100,35,90
+newcastle,autumn,15,25,900,1000,40,80
+wollongong,winter,0,10,900,1100,53,90
+wollongong,spring,15,25,1000,1100,70,85
+wollongong,summer,25,46,1000,1100,35,90
+wollongong,autumn,15,25,900,1000,40,80
+brisbane,winter,0,10,900,1100,53,90
+brisbane,spring,15,25,1000,1100,70,85
+brisbane,summer,25,46,1000,1100,35,90
+brisbane,autumn,15,25,900,1000,40,80
+logan city,winter,0,10,900,1100,53,90
+logan city,spring,15,25,1000,1100,70,85
+logan city,summer,25,46,1000,1100,35,90
+logan city,autumn,15,25,900,1000,40,80
