@@ -1,72 +1,117 @@
 package com.cognizant.weather;
 
-import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 
 import com.cognizant.weather.util.Log;
 
+/**
+ * Class generates random weather readings 
+ * */
 public class RandomWeatherEventGenerator {
 	
 	String condition;
-	String season;
 
 	Log LOG = new Log();
 	/**
 	 * Generates the weather readings
 	 * */
-	public String startSendingWeatherReadings(String city,Map<String, MinMax> map) {
+	public String startSendingWeatherReadings(String city,Map<String, MinMax> map, String season) {
 		Random rand = new Random();
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, -1); // today minus one year
-		Date dMin = cal.getTime();
-		cal.add(Calendar.YEAR, 2); // today plus 2 years
-		Date dMax = cal.getTime();
-		RandomDateGenerator rnd = new RandomDateGenerator(dMin, dMax);
+		RandomDateGenerator rnd = minMaxDate(season);
 		Date date = rnd.generate();
-		MinMax minMax = new MinMax(city + "|" + getSeason(date), map);
+		MinMax minMax = new MinMax(city + "|" + season.toLowerCase(), map);
 		int temp = rand.nextInt((minMax.getMaxTemp() - minMax.getMinTemp()) + 1) + minMax.getMinTemp();
 		float pressure = rand.nextFloat() * (minMax.getMaxPressure() - minMax.getMinPressure()) + minMax.getMinPressure();
 		float humidity = rand.nextFloat() * (minMax.getMaxHumidity() - minMax.getMinHumidity()) + minMax.getMinHumidity();
-		condition = getCondition(temp, pressure, humidity);
+		condition = getCondition(pressure, humidity, season, date);
 		WeatherEvent weatherEvent = new WeatherEvent(temp, pressure, humidity, date, condition);
 		String weather = weatherEvent.toString();
 		LOG.info(RandomWeatherEventGenerator.class, "WeatherEvent generated is: " + weather);
 		
 		return weather;
 	}
-
-	/* returns the season based on month of date */
-	String getSeason(Date date) {
-		int month = date.getMonth();
-		switch (month) {
-		case 11:
-		case 12:
-		case 1:
-		case 2:
-			return "summer";
-		case 3:
-		case 4:
-		case 5:
-			return "spring";
-		case 6:
-		case 7:
-		case 8:
-			return "winter";
-		default:
-			return "autumn";
-		}
-	}
 	
-	String getCondition(int temp, float pressure, float humidity) {
-		if (pressure > 90 && temp < 10 && humidity > 1000)
-			if (season.equals("winter")) {
+	/** 
+	 * predict condition based on pressure, temp, humidity and season
+	 * @return weather conditions
+	 * */
+	String getCondition(float pressure, float humidity, String season, Date date) {
+
+		if (pressure > 1000 && humidity > 80){
+			if (season.equals("WINTER")) {
 				return "snow";
 			} else{
 				return "rainy";
 			}
-		else
+		}else if(date.getHours()>6 && date.getHours()< 18){
 			return "sunny";
+		}else
+			return "clear sky";
+		
 	}
+	
+	/** setMinMax Date
+	 * @return RandomDateGenerator*/
+	RandomDateGenerator minMaxDate(String season){
+		RandomDateGenerator randomDateGenerator = new RandomDateGenerator();
+		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		String minDate;
+		String maxDate;
+		
+		switch(season){
+		case "SUMMER":
+			minDate = "01-11-2016 00:00:01";
+			maxDate = "28-02-2017 23:59:59";
+			try {
+				randomDateGenerator.setdMin(formatter.parse(minDate));
+				randomDateGenerator.setdMax(formatter.parse(maxDate));
+			} catch (ParseException e) {
+				LOG.error(RandomWeatherEventGenerator.class, "Check if date is in dd-MM-yyyy HH:mm:ss format");
+			}
+			break;
+			
+		case "SPRING":
+			minDate = "01-03-2016 00:00:01";
+			maxDate = "30-05-2016 23:59:59";
+			try {
+				randomDateGenerator.setdMin(formatter.parse(minDate));
+				randomDateGenerator.setdMax(formatter.parse(maxDate));
+			} catch (ParseException e) {
+				LOG.error(RandomWeatherEventGenerator.class, "Check if date is in dd-MM-yyyy HH:mm:ss format");
+			}
+			break;
+			
+		case "WINTER":
+			minDate = "01-06-2016 00:00:01";
+			maxDate = "30-08-2016 23:59:59";
+			try {
+				randomDateGenerator.setdMin(formatter.parse(minDate));
+				randomDateGenerator.setdMax(formatter.parse(maxDate));
+			} catch (ParseException e) {
+				LOG.error(RandomWeatherEventGenerator.class, "Check if date is in dd-MM-yyyy HH:mm:ss format");
+			}
+			break;
+		
+		default:
+			minDate = "01-09-2016 00:00:01";
+			maxDate = "31-10-2016 23:59:59";
+			try {
+				randomDateGenerator.setdMin(formatter.parse(minDate));
+				randomDateGenerator.setdMax(formatter.parse(maxDate));
+			} catch (ParseException e) {
+				LOG.error(RandomWeatherEventGenerator.class, "Check if date is in dd-MM-yyyy HH:mm:ss format");
+			}
+		
+		}
+		return randomDateGenerator;		
+		
+	}
+
+	
+	
 }

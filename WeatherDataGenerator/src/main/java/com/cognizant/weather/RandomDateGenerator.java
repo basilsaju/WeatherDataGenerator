@@ -2,17 +2,23 @@ package com.cognizant.weather;
 
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Class that sets date range and 
+ * generate random dates between the dates
+ * 
+ * */
 public class RandomDateGenerator {
-
 	private Date dMin = null;
 	private Date dMax = null;
-
-	/** Creates a new instance of RandomDateGenerator */
-	public RandomDateGenerator(Date min, Date max) {
-		dMin = min;
-		dMax = max;
+	
+	public void setdMin(Date dMin) {
+		this.dMin = dMin;
 	}
+
+	public void setdMax(Date dMax) {
+		this.dMax = dMax;
+	}
+
 
 	/** method to generate random date */
 	public Date generate() {

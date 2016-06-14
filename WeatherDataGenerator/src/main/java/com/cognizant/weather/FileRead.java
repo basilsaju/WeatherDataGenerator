@@ -10,6 +10,9 @@ import java.util.Map;
 
 import com.cognizant.weather.util.Log;
 
+/**
+ * Reads the location file and minmax file
+ * */
 public class FileRead {
 
 	static Log LOG = new Log();
@@ -17,6 +20,12 @@ public class FileRead {
 	static Map<String, Cordinates> locationMap = new HashMap<String, Cordinates>();
 	static Map<String, MinMax> minMaxMap = new HashMap<String, MinMax>();
 
+	/**
+	 * Read location file
+	 * file contains data in the format: latitude, longitude,altitude
+	 * 
+	 * @return Map<String, Cordinates>
+	 * */
 	static Map<String, Cordinates> readLocationFile(File locationFile) {
 		FileReader reader = null;
 		try {

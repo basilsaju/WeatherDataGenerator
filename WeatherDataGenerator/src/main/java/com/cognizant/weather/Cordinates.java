@@ -2,6 +2,10 @@ package com.cognizant.weather;
 
 import java.text.DecimalFormat;
 
+/**
+ * POJO with latitude, longitude and altitude
+ * 
+ * */
 public class Cordinates {
 	private float latitude;
 	private float longitude;

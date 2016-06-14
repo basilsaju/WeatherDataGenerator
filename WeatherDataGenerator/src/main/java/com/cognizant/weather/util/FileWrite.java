@@ -4,14 +4,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 /**
-*This class is to write output to a file
-* @param fileName, content
-*/
+ * Class to write output to a file.
+ * */
 public class FileWrite {
 	
-	
+	/**
+	 * method to write contents to a file
+	 * @param fileName, content
+	 * */
 	public static void write(String fileName, String content){
 		try {
 

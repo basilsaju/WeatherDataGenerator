@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Immutable Temperature Event class. The process control system creates these
+ * Temperature Event class. The process control system creates these
  * events.
  */
 public class WeatherEvent {

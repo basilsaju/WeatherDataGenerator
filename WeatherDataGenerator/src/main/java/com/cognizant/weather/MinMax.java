@@ -1,7 +1,10 @@
 package com.cognizant.weather;
 
 import java.util.Map;
-
+/**
+ * POJO with minTemp, maxTemp, minPressure, maxPressure, minHumidity, maxHumidity
+ *  
+ * */
 public class MinMax {
 
 	/** Temperature in Celcius. */
