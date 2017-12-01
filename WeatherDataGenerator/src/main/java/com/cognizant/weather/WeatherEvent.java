@@ -1,12 +1,11 @@
-package com.cognizant.weather;
+package com.cba.weather;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Temperature Event class. The process control system creates these
- * events.
+ * Temperature Event class. The process control system creates these events.
  */
 public class WeatherEvent {
 
@@ -21,8 +20,8 @@ public class WeatherEvent {
 
 	/** Time temperature reading was taken. */
 	private Date timeOfReading;
-	
-	/** weather condition*/
+
+	/** weather condition */
 	private String condition;
 
 	/**
@@ -77,7 +76,7 @@ public class WeatherEvent {
 	public Date getTimeOfReading() {
 		return timeOfReading;
 	}
-	
+
 	/**
 	 * Get the weather condition.
 	 * 
@@ -86,7 +85,7 @@ public class WeatherEvent {
 	public String getCondition() {
 		return condition;
 	}
-	
+
 	/**
 	 * Set the weather condition.
 	 * 
@@ -100,8 +99,9 @@ public class WeatherEvent {
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		String tempReadings = "|" + formatter.format(timeOfReading) + "|"
-				+ temperature + "|" + String.format("%.2f", pressure) + "|"
-				+ String.format("%.2f", humidity) + "|" + condition;
+				+ condition + "|" + temperature + "|"
+				+ String.format("%.2f", pressure) + "|"
+				+ String.format("%.2f", humidity);
 
 		return tempReadings;
 	}
