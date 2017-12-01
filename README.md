@@ -2,7 +2,7 @@
 
 This is a project to generate sample data for testing weather models. 
 The output is of the following format:
-city|latitude,longitude,altitude|timestamp|temperature|pressure|humidity|condition
+city|latitude,longitude,altitude|timestamp|condition|temperature|pressure|humidity
 
 inputs:
   1. location file location: city,latitude,longitude,altitude.
