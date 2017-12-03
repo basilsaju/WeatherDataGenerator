@@ -1,4 +1,4 @@
-# WeatherDataGenerator
+# WeatherDataGenerator (archived)
 
 This is a project to generate sample data for testing weather models. 
 The output is of the following format:
